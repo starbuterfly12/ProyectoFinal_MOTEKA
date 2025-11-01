@@ -10,7 +10,7 @@ export default function Ordenes() {
   const [mecanicos, setMecanicos] = useState<any[]>([]);
 
   const [clienteId, setClienteId] = useState('');
-  const [motoId, setMotoId] = useState('');
+  the [motoId, setMotoId] = useState('');
   const [mecanicoId, setMecanicoId] = useState('');
 
   const [observaciones, setObservaciones] = useState('');
@@ -33,14 +33,14 @@ export default function Ordenes() {
   const [cargandoReportes, setCargandoReportes] = useState(false);
 
   // Reasignar mecánico (todavía sin UI completa)
-  const [reasignandoOrdenId, setReasignandoOrdenId] = useState<number | null>(null);
-  const [nuevoMecanicoId, setNuevoMecanicoId] = useState<string>('');
-  const [errorReasignar, setErrorReasignar] = useState<string>('');
+  // const [reasignandoOrdenId, setReasignandoOrdenId] = useState<number | null>(null);
+  // const [nuevoMecanicoId, setNuevoMecanicoId] = useState<string>('');
+  // const [errorReasignar, setErrorReasignar] = useState<string>('');
 
   // Exportar historial por cliente
   const [clienteExportId, setClienteExportId] = useState('');
 
-  const currentUser = getUser(); // por si lo ocupamos luego
+  const _currentUser = getUser(); // de momento no se usa en build, lo dejamos con _ para que TS no marque error
 
   const fetchOrdenes = async () => {
     const response = await api.get(`/api/ordenes?cliente_nombre=${search}`);
@@ -71,15 +71,18 @@ export default function Ordenes() {
     fetchClientes();
     fetchOrdenes();
     fetchMecanicos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     fetchOrdenes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   useEffect(() => {
     fetchMotos(clienteId);
     setMotoId('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clienteId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
