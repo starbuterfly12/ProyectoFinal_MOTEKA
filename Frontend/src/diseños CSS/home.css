@@ -1,0 +1,269 @@
+/* ===== Layout general de la página ===== */
+
+.pageWrapper {
+  background-color: #323334;
+  min-height: 100vh;
+  padding: 1rem 1rem 3rem 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.loadingText {
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.errorText {
+  color: crimson;
+  font-size: 0.9rem;
+}
+
+/* ===== GRID de cards resumen ===== */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 1500px;
+}
+
+/* Tarjetas superiores */
+
+.statCard {
+  background-color: #4d4c4c;
+  border: 1px solid #5f5e5e;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  min-height: 90px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(255, 255, 255); /* número grande blanco */
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: #d0d0d0; /* texto secundario gris claro */
+}
+
+/* ===== GRID principal (módulos / acciones / actividad) ===== */
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1500px;
+  margin-bottom: 1.5rem;
+}
+
+.leftCol {
+  display: grid;
+  gap: 1rem;
+}
+
+.rightCol {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Panel reutilizable */
+
+.panel {
+  background-color: #504f4f;
+  border: 1px solid #373737;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.panelTitle {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff; /* título blanco */
+}
+
+/* ===== "Módulos del sistema" ===== */
+
+.modulesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.moduleCard {
+  display: block;
+  background-color: #2f2f2f;
+  border: 1px solid #020202;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: #ffffff; /* texto principal */
+  transition: background-color 0.12s, box-shadow 0.12s;
+}
+
+.moduleCard:hover {
+  background-color: #7d7d7d;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.moduleTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #ffffff;
+}
+
+.moduleDesc {
+  font-size: 0.75rem;
+  color: #cfcfcf;
+  line-height: 1.4;
+}
+
+/* ===== Acciones rápidas ===== */
+
+.quickActionsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.quickButton {
+  background-color: #3a3a3a;
+  border: 1px solid #5a5a5a;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color 0.12s, box-shadow 0.12s;
+}
+
+.quickButton:hover {
+  background-color: #5a5a5a;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== Actividad reciente ===== */
+
+.activityListWrapper {
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.activityEmpty {
+  border: 1px dashed #777;
+  border-radius: 4px;
+  padding: 0.75rem;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.8rem;
+  background-color: #2f2f2f;
+}
+
+.activityItem {
+  border-bottom: 1px solid #3a3a3a;
+  padding: 0.5rem 0;
+}
+
+.activityTitle {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.15rem;
+}
+
+.activityDetail {
+  color: #cfcfcf;
+  margin-bottom: 0.15rem;
+}
+
+.activityTime {
+  color: #9d9d9d;
+  font-size: 0.7rem;
+}
+
+/* ===== Tabla de órdenes ===== */
+
+.ordersSection {
+  width: 100%;
+  max-width: 1500px;
+  margin-bottom: 2rem;
+}
+
+.tableScroll {
+  overflow-x: auto;
+}
+
+.ordersTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+  font-size: 0.8rem;
+  color: #fff;
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ordersHeadRow {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+.ordersTh {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #ffffff;
+  border-bottom: 1px solid #4a4a4a;
+}
+
+.ordersBodyRow {
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.ordersTd {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  color: #e3e3e3;
+  vertical-align: top;
+  background-color: #2a2a2a;
+}
+
+/* ===== Spacer al final ===== */
+
+.pageBottomSpacer {
+  height: 3rem;
+}
+
+/* ===== Responsive tweaks ===== */
+
+@media (max-width: 900px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .rightCol {
+    order: 2;
+  }
+}

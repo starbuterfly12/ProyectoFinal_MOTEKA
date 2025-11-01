@@ -1,0 +1,363 @@
+/* ===== wrapper general de la página ===== */
+.ordenesPageWrapper {
+  color: #f5f5f5;
+  background-color: #323334;
+  min-height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ordenesTitulo {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+/* panel principal gris oscuro */
+.ordenesPanel {
+  background-color: #4d4c4c;
+  border: 1px solid #5f5e5e;
+  border-radius: 8px;
+  padding: 1rem 1rem 2rem 1rem;
+  max-width: 1500px;
+  margin: 0 auto 2rem auto;
+  color: #fff;
+}
+
+/* ===== form crear orden ===== */
+.ordenForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.ordenInput {
+  background-color: #2f2f2f;
+  border: 1px solid #000;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.5rem;
+  min-width: 200px;
+  font-size: 0.9rem;
+}
+
+.ordenInput:disabled {
+  opacity: 0.4;
+}
+
+/* ===== filtros / exportes ===== */
+.filtrosWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+.filtroBloque {
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+  color: #fff;
+}
+
+.filtroLabel {
+  font-size: 0.8rem;
+  color: #d6d6d6;
+  margin-bottom: 0.4rem;
+}
+
+.exportButtonsRow {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ===== botones reusables ===== */
+.btnRojo {
+  background-color: #f63b3b;
+  color: #fff;
+  border: 1px solid #f63b3b;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.btnRojo:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btnNegro {
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.btnNegro:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btnChicoClaro {
+  background-color: #e5e5e5;
+  color: #000;
+  border: 1px solid #999;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.btnNegroChico {
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.btnGrisChico {
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* ===== tabla de órdenes ===== */
+.tablaScroll {
+  overflow-x: auto;
+}
+
+.ordenesTabla {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+  font-size: 0.8rem;
+  color: #fff;
+  background-color: #2b2b2b;
+  border: 1px solid #000;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.ordenesHeadRow {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+.ordenesTh {
+  text-align: left;
+  padding: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-bottom: 1px solid #000;
+  color: #fff;
+}
+
+.ordenesBodyRow {
+  border-bottom: 1px solid #444;
+}
+
+.ordenesTd {
+  padding: 0.75rem;
+  font-size: 0.8rem;
+  color: #f5f5f5;
+  vertical-align: top;
+}
+
+.ordenAccionesCell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* selector de estado dentro de la tabla */
+.ordenEstadoSelect {
+  background-color: #2f2f2f;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+/* ===== MODALES ===== */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modalCard {
+  background: #2f2f2f;
+  color: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+  overflow: hidden;
+  border: 1px solid #000;
+}
+
+.modalCardScroll {
+  overflow-y: auto;
+}
+
+.modalTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+/* tabla historial dentro de modal */
+.histTabla {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1f1f1f;
+  border: 1px solid #000;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.histHeadRow {
+  background-color: #3a0000;
+  color: #fff;
+}
+
+.histTh {
+  text-align: left;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-bottom: 1px solid #000;
+  color: #fff;
+}
+
+.histBodyRow {
+  border-bottom: 1px solid #333;
+}
+
+.histTd {
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  color: #eee;
+  vertical-align: top;
+}
+
+/* Botón cerrar modal historial */
+.modalCloseBtn {
+  margin-top: 1rem;
+}
+
+/* modal crear reporte / campos */
+.modalField {
+  margin-top: 1rem;
+}
+
+.modalLabel {
+  display: block;
+  font-size: 0.8rem;
+  color: #ddd;
+  margin-bottom: 0.5rem;
+}
+
+.modalTextarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  border-radius: 4px;
+  border: 1px solid #000;
+  background-color: #1f1f1f;
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.modalError {
+  color: #ff7a7a;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+/* acciones dentro del modal crear */
+.modalActions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* modal ver reportes técnicos */
+.modalLoading {
+  color: #fff;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.reportesLista {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.reportesEmpty {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.reporteItem {
+  background-color: #1f1f1f;
+  border: 1px solid #000;
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.reporteMeta {
+  font-size: 0.8rem;
+  color: #bbb;
+  margin-bottom: 0.5rem;
+}
+
+.reporteDescripcion {
+  color: #fff;
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+}
+
+.reporteInfoExtra {
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.modalActionsRight {
+  text-align: right;
+  margin-top: 1rem;
+}

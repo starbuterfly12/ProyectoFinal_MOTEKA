@@ -1,0 +1,187 @@
+/* ===== Layout general ===== */
+.clientesPageWrapper {
+  background-color: #323334;
+  min-height: 100vh;
+  padding: 1.5rem;
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+.clientesTitulo {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ===== Panel contenedor ===== */
+.clientesPanel {
+  background-color: #4d4c4c;
+  border: 1px solid #5f5e5e;
+  border-radius: 8px;
+  padding: 1rem 1rem 1.5rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto 2rem auto;
+  color: #fff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Formulario crear/editar ===== */
+.clientesForm {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.clientesFieldGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.clientesFieldSpan2 {
+  grid-column: span 2;
+}
+
+.clientesLabel {
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.clientesInput {
+  background-color: #2f2f2f;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+/* Botones del form */
+.clientesButtonsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ===== Bloque de búsqueda ===== */
+.clientesSearchBlock {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  margin-bottom: 1rem;
+}
+
+/* ===== Tabla ===== */
+.clientesTablaScroll {
+  overflow-x: auto;
+}
+
+.clientesTabla {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  color: #fff;
+  background-color: #2b2b2b;
+  border: 1px solid #000;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.clientesHeadRow {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+.clientesTh {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: #fff;
+  border-bottom: 1px solid #000;
+}
+
+.clientesBodyRow {
+  border-bottom: 1px solid #444;
+  background-color: #2b2b2b;
+}
+
+.clientesTd {
+  padding: 0.6rem 0.75rem;
+  color: #f5f5f5;
+  vertical-align: top;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* ===== Botones reutilizados ===== */
+.btnRojo {
+  background-color: #f63b3b;
+  color: #fff;
+  border: 1px solid #f63b3b;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.btnGris {
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.accionesCell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.btnNegroChico {
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.btnRojoChico {
+  background-color: #f63b3b;
+  color: #fff;
+  border: 1px solid #f63b3b;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 700px) {
+  .clientesForm {
+    grid-template-columns: 1fr;
+  }
+
+  .clientesFieldSpan2 {
+    grid-column: span 1;
+  }
+}

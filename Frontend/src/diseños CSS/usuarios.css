@@ -1,0 +1,188 @@
+/* ===== Wrapper general de la página ===== */
+.usuarios-wrapper {
+  background-color: #323334;
+  min-height: 100vh;
+  padding: 1.5rem;
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  display: grid;
+  gap: 1.5rem;
+  max-width: 1300px;
+  margin: 0 auto 2rem auto;
+}
+
+/* ===== Card / panel reutilizable ===== */
+.usuarios-card {
+  background-color: #4d4c4c;
+  border: 1px solid #5f5e5e;
+  border-radius: 8px;
+  padding: 1rem 1rem 1.25rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  color: #fff;
+}
+
+.usuarios-titulo {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.usuarios-desc {
+  margin: 0 0 1rem 0;
+  font-size: 0.8rem;
+  color: #d0d0d0;
+  line-height: 1.4;
+}
+
+/* ===== Mensajes ===== */
+.usuarios-error {
+  background-color: rgba(220, 38, 38, 0.15); /* rojo translúcido */
+  color: #ff6b6b;
+  border: 1px solid #dc2626;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.usuarios-ok {
+  background-color: rgba(34, 197, 94, 0.16); /* verde translú */
+  color: #4ade80;
+  border: 1px solid #22c55e;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.usuarios-info {
+  font-size: 0.8rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.usuarios-hint {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #c7c7c7;
+}
+
+/* ===== Form ===== */
+.usuarios-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.usuarios-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.usuarios-field-span2 {
+  grid-column: span 2;
+}
+
+.usuarios-label {
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+
+.usuarios-input {
+  background-color: #2f2f2f;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+/* botón guardar usuario */
+.usuarios-buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.usuarios-boton {
+  background-color: #f63b3b;
+  color: #fff;
+  border: 1px solid #f63b3b;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ===== Tabla usuarios ===== */
+.usuarios-tabla-wrapper {
+  overflow-x: auto;
+}
+
+.usuarios-tabla {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  background-color: #2b2b2b;
+  border: 1px solid #000;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.usuarios-tabla thead tr {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+.usuarios-tabla thead th {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.7rem;
+  border-bottom: 1px solid #000;
+  color: #fff;
+}
+
+.usuarios-tabla tbody tr {
+  border-bottom: 1px solid #444;
+  background-color: #2b2b2b;
+}
+
+.usuarios-tabla tbody td {
+  padding: 0.6rem 0.75rem;
+  color: #f5f5f5;
+  vertical-align: top;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.usuarios-vacio {
+  text-align: center;
+  color: #aaa;
+  font-style: italic;
+}
+
+/* ===== Responsive tweaks ===== */
+@media (max-width: 800px) {
+  .usuarios-form {
+    grid-template-columns: 1fr;
+  }
+  .usuarios-field-span2 {
+    grid-column: span 1;
+  }
+}
