@@ -139,7 +139,10 @@ export default function Home() {
               <tbody>
                 {activas.length === 0 && (
                   <tr>
-                    <Td colSpan={6} style={{ textAlign: 'center', color: '#777' }}>
+                    <Td
+                      colSpan={6}
+                      style={{ textAlign: 'center', color: '#777' }}
+                    >
                       No hay órdenes activas hoy.
                     </Td>
                   </tr>
@@ -215,7 +218,7 @@ function QuickButton({ to, label }: { to: string; label: string }) {
   );
 }
 
-function Th({ children }: { children: any }) {
+function Th({ children }: { children: React.ReactNode }) {
   return (
     <th className="ordersTh">
       {children}
@@ -225,13 +228,19 @@ function Th({ children }: { children: any }) {
 
 function Td({
   children,
-  style
+  style,
+  colSpan
 }: {
-  children: any;
+  children: React.ReactNode;
   style?: React.CSSProperties;
+  colSpan?: number;
 }) {
   return (
-    <td className="ordersTd" style={style || {}}>
+    <td
+      className="ordersTd"
+      style={style || {}}
+      colSpan={colSpan}
+    >
       {children}
     </td>
   );
