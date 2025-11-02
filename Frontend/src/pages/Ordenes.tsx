@@ -213,7 +213,7 @@ export default function Ordenes() {
   };
 
   // permisos para editar estado
-  const puedeEditarEstado = (orden: any) => {
+  const puedeEditarEstado = () => {
     if (hasRole('gerente', 'encargado')) return true;
     if (hasRole('mecanico')) return true;
     return false;
@@ -385,7 +385,7 @@ export default function Ordenes() {
                   <td className="ordenesTd">{o.motocicleta?.placa || 'N/A'}</td>
 
                   <td className="ordenesTd">
-                    {puedeEditarEstado(o) ? (
+                    {puedeEditarEstado() ? (
                       <select
                         className="ordenEstadoSelect"
                         value={o.estado}
