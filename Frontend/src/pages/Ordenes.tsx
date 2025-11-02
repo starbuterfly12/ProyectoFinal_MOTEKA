@@ -70,10 +70,12 @@ export default function Ordenes() {
     fetchClientes();
     fetchOrdenes();
     fetchMecanicos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     fetchOrdenes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   useEffect(() => {
@@ -554,7 +556,7 @@ export default function Ordenes() {
                 {listaReportes.map((r: any) => (
                   <div key={r.id} className="reporteItem">
                     <div className="reporteMeta">
-                      <b>{r.mecanico_nombre || '—'}</b> |{' '}
+                      <b>{r.mecanico_nombre || '—'}</b>{' '}|{' '}
                       {new Date(r.creado_en).toLocaleString()}
                     </div>
 
