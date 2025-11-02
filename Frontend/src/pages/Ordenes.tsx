@@ -4,44 +4,50 @@ import { hasRole, getUser } from '@/lib/auth';
 import '@/diseños CSS/ordenes.css';
 
 export default function Ordenes() {
+  // listas y datos cargados
   const [ordenes, setOrdenes] = useState<any[]>([]);
   const [clientes, setClientes] = useState<any[]>([]);
   const [motos, setMotos] = useState<any[]>([]);
   const [mecanicos, setMecanicos] = useState<any[]>([]);
 
+  // form crear orden
   const [clienteId, setClienteId] = useState('');
-  the [motoId, setMotoId] = useState('');
+  const [motoId, setMotoId] = useState('');
   const [mecanicoId, setMecanicoId] = useState('');
-
   const [observaciones, setObservaciones] = useState('');
+
+  // búsqueda en tabla
   const [search, setSearch] = useState('');
 
+  // historial de una orden
   const [historialOrden, setHistorialOrden] = useState<any[]>([]);
   const [showHistorial, setShowHistorial] = useState(false);
 
-  // Reporte técnico (crear)
+  // crear reporte técnico
   const [showReporteModal, setShowReporteModal] = useState(false);
   const [ordenParaReporte, setOrdenParaReporte] = useState<number | null>(null);
   const [textoReporte, setTextoReporte] = useState('');
   const [errorReporte, setErrorReporte] = useState('');
   const [guardandoReporte, setGuardandoReporte] = useState(false);
 
-  // Ver reportes técnicos
+  // ver reportes técnicos
   const [showVerReportes, setShowVerReportes] = useState(false);
   const [ordenParaVerReportes, setOrdenParaVerReportes] = useState<number | null>(null);
   const [listaReportes, setListaReportes] = useState<any[]>([]);
   const [cargandoReportes, setCargandoReportes] = useState(false);
 
-  // Reasignar mecánico (todavía sin UI completa)
-  // const [reasignandoOrdenId, setReasignandoOrdenId] = useState<number | null>(null);
-  // const [nuevoMecanicoId, setNuevoMecanicoId] = useState<string>('');
-  // const [errorReasignar, setErrorReasignar] = useState<string>('');
+  // reasignar mecánico (a futuro, sin UI todavía)
+  const [reasignandoOrdenId, setReasignandoOrdenId] = useState<number | null>(null);
+  const [nuevoMecanicoId, setNuevoMecanicoId] = useState<string>('');
+  const [errorReasignar, setErrorReasignar] = useState<string>('');
 
-  // Exportar historial por cliente
+  // exportes por cliente
   const [clienteExportId, setClienteExportId] = useState('');
 
-  const _currentUser = getUser(); // de momento no se usa en build, lo dejamos con _ para que TS no marque error
+  // info user actual (por ahora no lo usamos directamente, así que lo comentamos)
+  // const currentUser = getUser();
 
+  // --------- fetchers ---------
   const fetchOrdenes = async () => {
     const response = await api.get(`/api/ordenes?cliente_nombre=${search}`);
     setOrdenes(response.data);
@@ -67,24 +73,23 @@ export default function Ordenes() {
     setMecanicos(response.data || []);
   };
 
+  // --------- efectos ---------
   useEffect(() => {
     fetchClientes();
     fetchOrdenes();
     fetchMecanicos();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     fetchOrdenes();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   useEffect(() => {
     fetchMotos(clienteId);
     setMotoId('');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clienteId]);
 
+  // --------- acciones ---------
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -109,7 +114,7 @@ export default function Ordenes() {
   const handleCambiarEstado = async (ordenId: number, nuevoEstado: string) => {
     try {
       await api.patch(`/api/ordenes/${ordenId}/estado`, { estado: nuevoEstado });
-      // correo al cliente se dispara en backend
+      // backend manda correo al cliente
       fetchOrdenes();
     } catch (err: any) {
       alert(err.response?.data?.error || 'Error');
@@ -126,7 +131,7 @@ export default function Ordenes() {
     }
   };
 
-  // EXPORTAR (xlsx/pdf) global o por cliente
+  // exportar XLSX / PDF
   const handleExportar = async (formato: string, onlyCliente?: boolean) => {
     try {
       const params: any = { formato };
@@ -160,7 +165,7 @@ export default function Ordenes() {
     }
   };
 
-  // modal crear reporte técnico
+  // modal CREAR REPORTE TÉCNICO
   const abrirModalReporte = (ordenId: number) => {
     setOrdenParaReporte(ordenId);
     setTextoReporte('');
@@ -179,6 +184,7 @@ export default function Ordenes() {
     try {
       setGuardandoReporte(true);
       setErrorReporte('');
+
       await api.post('/api/reportes_trabajo', {
         orden_id: ordenParaReporte,
         descripcion: textoReporte.trim()
@@ -194,7 +200,7 @@ export default function Ordenes() {
     }
   };
 
-  // modal ver reportes técnicos
+  // modal VER REPORTES TÉCNICOS
   const abrirVerReportes = async (ordenId: number) => {
     setOrdenParaVerReportes(ordenId);
     setShowVerReportes(true);
@@ -212,13 +218,14 @@ export default function Ordenes() {
     }
   };
 
-  // permisos de edición de estado
+  // permisos para editar estado
   const puedeEditarEstado = (orden: any) => {
     if (hasRole('gerente', 'encargado')) return true;
     if (hasRole('mecanico')) return true;
     return false;
   };
 
+  // --------- render ---------
   return (
     <div className="ordenesPageWrapper">
       <h1 className="ordenesTitulo">Órdenes de Trabajo</h1>
@@ -363,7 +370,7 @@ export default function Ordenes() {
           )}
         </div>
 
-        {/* TABLA ORDENES */}
+        {/* TABLA ÓRDENES */}
         <div className="tablaScroll">
           <table className="ordenesTabla">
             <thead>
@@ -377,18 +384,18 @@ export default function Ordenes() {
               </tr>
             </thead>
             <tbody>
-              {ordenes.map((orden) => (
-                <tr key={orden.id} className="ordenesBodyRow">
-                  <td className="ordenesTd">{orden.id}</td>
-                  <td className="ordenesTd">{orden.cliente?.nombre}</td>
-                  <td className="ordenesTd">{orden.motocicleta?.placa || 'N/A'}</td>
+              {ordenes.map((o) => (
+                <tr key={o.id} className="ordenesBodyRow">
+                  <td className="ordenesTd">{o.id}</td>
+                  <td className="ordenesTd">{o.cliente?.nombre}</td>
+                  <td className="ordenesTd">{o.motocicleta?.placa || 'N/A'}</td>
 
                   <td className="ordenesTd">
-                    {puedeEditarEstado(orden) ? (
+                    {puedeEditarEstado(o) ? (
                       <select
                         className="ordenEstadoSelect"
-                        value={orden.estado}
-                        onChange={(e) => handleCambiarEstado(orden.id, e.target.value)}
+                        value={o.estado}
+                        onChange={(e) => handleCambiarEstado(o.id, e.target.value)}
                       >
                         <option value="EN_ESPERA">EN_ESPERA</option>
                         <option value="EN_REPARACION">EN_REPARACION</option>
@@ -396,20 +403,20 @@ export default function Ordenes() {
                         <option value="CANCELADA">CANCELADA</option>
                       </select>
                     ) : (
-                      <span>{orden.estado}</span>
+                      <span>{o.estado}</span>
                     )}
                   </td>
 
                   <td className="ordenesTd">
-                    {orden.fecha_ingreso
-                      ? new Date(orden.fecha_ingreso).toLocaleString()
+                    {o.fecha_ingreso
+                      ? new Date(o.fecha_ingreso).toLocaleString()
                       : '—'}
                   </td>
 
                   <td className="ordenesTd ordenAccionesCell">
                     <button
                       className="btnChicoClaro"
-                      onClick={() => handleVerHistorial(orden.id)}
+                      onClick={() => handleVerHistorial(o.id)}
                     >
                       Historial
                     </button>
@@ -417,7 +424,7 @@ export default function Ordenes() {
                     {hasRole('mecanico', 'gerente', 'encargado') && (
                       <button
                         className="btnNegroChico"
-                        onClick={() => abrirModalReporte(orden.id)}
+                        onClick={() => abrirModalReporte(o.id)}
                       >
                         Reporte
                       </button>
@@ -426,7 +433,7 @@ export default function Ordenes() {
                     {hasRole('mecanico', 'gerente', 'encargado') && (
                       <button
                         className="btnGrisChico"
-                        onClick={() => abrirVerReportes(orden.id)}
+                        onClick={() => abrirVerReportes(o.id)}
                       >
                         Ver reportes
                       </button>
