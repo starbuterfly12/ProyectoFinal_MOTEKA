@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import api from '@/lib/api';
-import { hasRole, getUser } from '@/lib/auth';
+import { hasRole } from '@/lib/auth';
 import '@/diseños CSS/ordenes.css';
 
 export default function Ordenes() {
@@ -36,16 +36,8 @@ export default function Ordenes() {
   const [listaReportes, setListaReportes] = useState<any[]>([]);
   const [cargandoReportes, setCargandoReportes] = useState(false);
 
-  // reasignar mecánico (a futuro, sin UI todavía)
-  const [reasignandoOrdenId, setReasignandoOrdenId] = useState<number | null>(null);
-  const [nuevoMecanicoId, setNuevoMecanicoId] = useState<string>('');
-  const [errorReasignar, setErrorReasignar] = useState<string>('');
-
   // exportes por cliente
   const [clienteExportId, setClienteExportId] = useState('');
-
-  // info user actual (por ahora no lo usamos directamente, así que lo comentamos)
-  // const currentUser = getUser();
 
   // --------- fetchers ---------
   const fetchOrdenes = async () => {
